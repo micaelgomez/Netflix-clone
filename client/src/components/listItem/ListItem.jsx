@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const ListItem = ({ index, item }) => {
+export default function ListItem({ index, item }) {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
 
@@ -30,7 +30,7 @@ const ListItem = ({ index, item }) => {
   }, [item]);
 
   return (
-    <Link to={{ pathname: "/watch", movie: movie }}>
+    <Link to={"/watch"} state={movie}>
       <div
         className="listitem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
@@ -41,7 +41,7 @@ const ListItem = ({ index, item }) => {
 
         {isHovered && (
           <>
-            <video src={movie.trailer} autoPlay={true} loop />
+            <video src={movie.video} autoPlay={true} loop />
             <div className="itemInfo">
               <div className="icons">
                 <PlayArrowIcon className="icon" />
@@ -62,6 +62,4 @@ const ListItem = ({ index, item }) => {
       </div>
     </Link>
   );
-};
-
-export default ListItem;
+}
