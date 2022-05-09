@@ -29,7 +29,6 @@ const Home = ({ type }) => {
         console.log(err);
       }
     };
-    
     getRandomLists();
   }, [type, genre]);
 

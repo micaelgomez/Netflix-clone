@@ -4,7 +4,6 @@ const verify = require("../verifyToken");
 
 //CREATE
 router.post("/", verify, async (req, res) => {
-  
   if (req.user.isAdmin) {
     const newMovie = new Movie(req.body);
     try {
@@ -62,7 +61,6 @@ router.get("/find/:id", verify, async (req, res) => {
 
 //GET ALL
 router.get("/", verify, async (req, res) => {
- 
   if (req.user.isAdmin) {
     try {
       const movies = await Movie.find();
